@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class Universidad {
+ private ArrayList<Persona> personas;
+
+public Universidad() {
+    personas = new ArrayList<>();
+}
+public void agregarPersona(Persona persona) {
+    personas.add(persona);
+}
+public void mostrarPersonas() {
+    for (Persona p : personas) {
+    System.out.println(p.toString());
+    }
+    }
+
+public int contarEstudiantesPorCarrera(String carrera) {
+int contador = 0;
+for (Persona p : personas) {
+if (p instanceof Estudiante) {
+Estudiante e = (Estudiante) p;
+if (e.getCarrera().equalsIgnoreCase(carrera)) {
+contador++;
+}
+}
+}
+   return contador;
+}
+}
