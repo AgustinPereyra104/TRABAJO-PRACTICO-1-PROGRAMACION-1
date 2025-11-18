@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+
+public class Estudiante extends Persona {
+    private String carrera;
+    private ArrayList<Materia> materias;
+
+    public Estudiante(String nombre, String apellido, int edad, String documento, String carrera) {
+        super(nombre, apellido, edad, documento);
+        this.carrera = carrera;
+        this.materias = new ArrayList<>();
+    }
+
+    public void agregarMateria(Materia materia) {
+        materias.add(materia);
+    }
+
+    public double calcularPromedio() {
+        if (materias.isEmpty()) return 0;
+        double suma = 0;
+        for (Materia m : materias) {
+            suma += m.getNota();
+        }
+        return suma / materias.size();
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante: " + super.toString() + " - Carrera: " + carrera + " - Promedio: " + calcularPromedio();
+    }
+}
